@@ -48,10 +48,9 @@ class TodoList extends React.Component {
         <ul>
           {this.props.todos.map((todo, index) => {
             return (
-              <div className="todo">
+              <div key={index} className="todo">
                 <li
                   onClick={this.markTodo}
-                  key={index}
                   id={index}
                   style={
                     todo.completed
