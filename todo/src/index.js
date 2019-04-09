@@ -3,13 +3,20 @@ import ReactDOM from "react-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 
-import reducer from "./reducers";
+import reducer, { initialState } from "./reducers";
 
 import "./index.css";
 import App from "./App";
 
-const store = createStore(reducer);
+const persistentState = localStorage.getItem("reduxStore")
+  ? JSON.parse(localStorage.getItem("reduxStore"))
+  : initialState;
+
+const store = createStore(reducer, persistentState);
 console.log(store);
+store.subscribe(() =>
+  localStorage.setItem("reduxStore", JSON.stringify(store.getState()))
+);
 
 ReactDOM.render(
   <Provider store={store}>

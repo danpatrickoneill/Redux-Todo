@@ -50,7 +50,7 @@ class TodoList extends React.Component {
             return (
               <div>
                 <li onClick={this.markTodo} key={index} id={index}>
-                  {todo.value}, {`${todo.completed}`}{" "}
+                  {todo.value}, {`${todo.completed}`}
                 </li>
                 <button id={index} onClick={this.eraseTodo}>
                   Delete Todo

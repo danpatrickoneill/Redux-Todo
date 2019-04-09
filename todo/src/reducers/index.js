@@ -1,6 +1,6 @@
 import { ADD_TODO, TOGGLE_TODO, DELETE_TODO } from "../actions";
 
-const initialState = {
+export const initialState = {
   todos: [
     {
       value: "Create todo app",
