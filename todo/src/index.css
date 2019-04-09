@@ -5,6 +5,7 @@
 
 .todo li {
   min-width: 200px;
+  cursor: pointer;
 }
 
 .todo button {
@@ -37,4 +38,8 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+button {
+  cursor: pointer;
 }
