@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, DELETE_TODO } from "../actions";
+import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, CLEAR_TODOS } from "../actions";
 
 export const initialState = {
   todos: [
@@ -29,9 +29,13 @@ export default (state = initialState, action) => {
       const newTodos = state.todos.map((todo, index) => {
         console.log(index, action.id);
         if (Number(action.id) === index) {
-          todo.completed = !todo.completed;
+          return {
+            ...todo,
+            completed: !todo.completed
+          };
+        } else {
+          return todo;
         }
-        return todo;
       });
       console.log(newTodos);
       return {
@@ -47,6 +51,12 @@ export default (state = initialState, action) => {
         todos: newTodos
       };
     }
+    case CLEAR_TODOS:
+      const newTodos = state.todos.filter(todo => !todo.completed);
+      console.log(newTodos);
+      return {
+        todos: newTodos
+      };
     default:
       return state;
   }
