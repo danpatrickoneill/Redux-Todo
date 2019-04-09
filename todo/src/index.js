@@ -12,7 +12,12 @@ const persistentState = localStorage.getItem("reduxStore")
   ? JSON.parse(localStorage.getItem("reduxStore"))
   : initialState;
 
-const store = createStore(reducer, persistentState);
+const store = createStore(
+  reducer,
+  persistentState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
 console.log(store);
 store.subscribe(() =>
   localStorage.setItem("reduxStore", JSON.stringify(store.getState()))
