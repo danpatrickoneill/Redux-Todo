@@ -6,7 +6,7 @@ class TodoList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ""
+      todoText: ""
     };
   }
 
@@ -21,14 +21,14 @@ class TodoList extends React.Component {
   submitTodo = e => {
     e.preventDefault();
     console.log("Submitting...");
-    if (this.state.text) {
-      this.props.addTodo(this.state.text);
+    if (this.state.todoText) {
+      this.props.addTodo(this.state.todoText);
     }
 
     // Reset everything
     e.target.reset();
     this.setState({
-      text: ""
+      todoText: ""
     });
   };
 
@@ -48,12 +48,21 @@ class TodoList extends React.Component {
         <ul>
           {this.props.todos.map((todo, index) => {
             return (
-              <div>
-                <li onClick={this.markTodo} key={index} id={index}>
-                  {todo.value}, {`${todo.completed}`}
+              <div className="todo">
+                <li
+                  onClick={this.markTodo}
+                  key={index}
+                  id={index}
+                  style={
+                    todo.completed
+                      ? { textDecoration: "line-through" }
+                      : { textDecoration: "none" }
+                  }
+                >
+                  {todo.value}
                 </li>
                 <button id={index} onClick={this.eraseTodo}>
-                  Delete Todo
+                  X
                 </button>
               </div>
             );
@@ -63,7 +72,7 @@ class TodoList extends React.Component {
           <input
             onChange={this.handleChanges}
             type="text"
-            name="text"
+            name="todoText"
             placeholder="Enter todo here"
           />
           <button>Submit todo</button>

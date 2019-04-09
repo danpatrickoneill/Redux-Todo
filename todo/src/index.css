@@ -1,0 +1,15 @@
+.todo {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.todo button {
+  margin-left: 20px;
+  background: orangered;
+  color: white;
+  border: none;
+}
+
+input {
+  padding-left: 0.25em;
+}
