@@ -1,9 +1,17 @@
-import { ADD_TODO, TOGGLE_TODO } from "../actions";
+import { ADD_TODO, TOGGLE_TODO, DELETE_TODO } from "../actions";
 
 const initialState = {
   todos: [
     {
       value: "Create todo app",
+      completed: false
+    },
+    {
+      value: "Walk the dog",
+      completed: false
+    },
+    {
+      value: "Fold laundry",
       completed: false
     }
   ]
@@ -25,6 +33,15 @@ export default (state = initialState, action) => {
         }
         return todo;
       });
+      console.log(newTodos);
+      return {
+        todos: newTodos
+      };
+    }
+    case DELETE_TODO: {
+      const newTodos = state.todos.filter(
+        (todo, index) => Number(action.id) !== index
+      );
       console.log(newTodos);
       return {
         todos: newTodos
