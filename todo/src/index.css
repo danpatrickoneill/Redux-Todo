@@ -3,11 +3,16 @@
   margin-bottom: 20px;
 }
 
+.todo li {
+  min-width: 200px;
+}
+
 .todo button {
   margin-left: 20px;
   background: orangered;
   color: white;
   border: none;
+  border-radius: 3px;
 }
 
 input {
@@ -26,6 +31,8 @@ h1 {
 }
 
 .App {
+  margin: 0 auto;
+
   max-width: 500px;
   display: flex;
   flex-direction: column;

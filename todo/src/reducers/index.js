@@ -13,6 +13,10 @@ export const initialState = {
     {
       value: "Fold laundry",
       completed: false
+    },
+    {
+      value: "Wipe down counters",
+      completed: false
     }
   ]
 };
